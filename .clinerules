@@ -1,0 +1,79 @@
+# Name Roulette Wheel Project Rules
+
+## Project Patterns
+
+### Code Style
+- HTML uses semantic elements for better accessibility
+- CSS uses a clean, modular approach with specific class names
+- JavaScript follows ES6+ conventions with clear function naming
+- Comments are used to explain complex logic or non-obvious decisions
+
+### Color Scheme
+- The wheel uses a vibrant, high-contrast color palette for visibility
+- UI elements follow a green/blue theme for actions
+- Red is reserved for removal/deletion actions
+- Text uses dark colors (#333, #444) for readability
+
+### Animation Patterns
+- CSS animations are preferred for performance
+- JavaScript controls animation timing and triggers
+- Cubic-bezier easing is used for realistic motion
+- Animation duration is set to 5 seconds for a satisfying experience
+- Fireworks animation is used to celebrate the winner
+- Particle animations provide visual excitement
+
+### UI Patterns
+- Input fields have clear placeholders
+- Buttons have hover states for better UX
+- The wheel is centered and prominently displayed
+- Results are clearly highlighted
+- Names are displayed in wheel segments when there are 12 or fewer names
+- Recording functionality is provided with clear visual feedback
+
+## User Preferences
+- Simple, intuitive interface without unnecessary complexity
+- Visual feedback for all actions
+- Smooth, realistic animations
+- Clear indication of results
+
+## Implementation Details
+
+### Wheel Construction
+- The wheel is constructed using absolutely positioned div elements
+- Each section is a div with rotation transform and clip-path for precise shape
+- Segments are equal-sized regardless of the number of names
+- Text is positioned using padding-bottom and transform
+- Font size is dynamically adjusted based on the number of names
+- Colors are assigned from a predefined array
+
+### Random Selection
+- Random selection uses Math.random() for the spin degree
+- The final position is calculated based on the rotation angle
+- The selection algorithm ensures every name has an equal chance
+
+### Name Input Management
+- Names are collected from input fields when spinning starts
+- Empty inputs are ignored
+- At least one name is required to spin
+- Input fields can be dynamically added or removed
+
+### Video Recording
+- MediaRecorder API is used to capture the wheel animation
+- Recording is triggered by a dedicated button
+- Visual feedback indicates when recording is active
+- MP4 format is used for better compatibility
+- Download link appears automatically when recording is complete
+
+## Known Challenges
+- Text positioning on the wheel becomes challenging with many names
+- Very long names may not display well on the wheel
+- The wheel visual clarity decreases with too many sections
+- Animation performance may vary across devices
+- Video recording may not work in all browsers (primarily supported in Chrome and Firefox)
+- Fireworks animation may be resource-intensive on lower-end devices
+
+## Future Development Patterns
+- Enhancements should maintain the simple, intuitive interface
+- New features should be optional and not complicate the core experience
+- Performance should be prioritized over visual complexity
+- Mobile experience should be considered for all new features

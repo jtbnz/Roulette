@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Roulette Wheel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Name Roulette Wheel</h1>
+        
+        <div class="input-section">
+            <h2>Enter Names</h2>
+            <div class="name-inputs">
+                <div class="name-input-row">
+                    <input type="text" class="name-input" placeholder="Enter a name">
+                    <button class="remove-name" title="Remove name">×</button>
+                </div>
+            </div>
+            <button id="add-name">Add Another Name</button>
+            <button id="spin-wheel">Spin the Wheel!</button>
+        </div>
+        
+        <div class="wheel-container">
+            <div class="wheel" id="wheel">
+                <!-- Names will be added here dynamically -->
+            </div>
+            <div class="pointer"></div>
+        </div>
+        
+        <div class="result-container">
+            <h2>Result:</h2>
+            <div id="result"></div>
+            <button id="record-button" class="record-button">Record Spin</button>
+            <a id="download-link" style="display: none;">Download Video</a>
+        </div>
+        
+        <div class="firework-container" id="firework-container">
+            <!-- Fireworks will be added here dynamically -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
