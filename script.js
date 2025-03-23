@@ -97,8 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const nameSpan = document.createElement('span');
             nameSpan.textContent = name;
             
-            // Adjust text rotation based on section angle
-            nameSpan.style.transform = `rotate(${90 - sectionAngle / 2}deg)`;
+            // Calculate text rotation to make it readable in the segment
+            // This rotates the text to be perpendicular to the radius
+            const textRotation = 90 + rotation;
+            nameSpan.style.transform = `rotate(${textRotation}deg)`;
             
             // Make font size larger for wheels with fewer names
             if (names.length <= 12) {
@@ -244,9 +246,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Calculate the winning index based on final position
         setTimeout(() => {
+            // The pointer is at the top (0 degrees), so we need to find which segment
+            // is at the top after the wheel stops spinning
             const finalRotation = spinDegree % 360;
             const sectionAngle = 360 / names.length;
-            const winningIndex = names.length - 1 - Math.floor(finalRotation / sectionAngle);
+            
+            // Calculate which segment is at the top (pointer position)
+            // We add 180 because the wheel rotates clockwise and the pointer is at the top
+            const winningIndex = Math.floor(((finalRotation + 180) % 360) / sectionAngle);
+            
+            // Ensure the index is within bounds
             const adjustedIndex = winningIndex % names.length;
             
             resultElement.textContent = `Winner: ${names[adjustedIndex]}`;
