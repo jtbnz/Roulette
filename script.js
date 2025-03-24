@@ -97,9 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const nameSpan = document.createElement('span');
             nameSpan.textContent = name;
             
-            // Calculate text rotation to make it readable in the segment
+            // Calculate text rotation to make it readable from the center outward
             // This rotates the text to be perpendicular to the radius
-            const textRotation = 90 + rotation;
+            // Add 45 degrees to align with the center of the segment
+            const textRotation = rotation + (sectionAngle / 2);
             nameSpan.style.transform = `rotate(${textRotation}deg)`;
             
             // Make font size larger for wheels with fewer names
@@ -252,8 +253,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const sectionAngle = 360 / names.length;
             
             // Calculate which segment is at the top (pointer position)
-            // We add 180 because the wheel rotates clockwise and the pointer is at the top
-            const winningIndex = Math.floor(((finalRotation + 180) % 360) / sectionAngle);
+            // The wheel rotates clockwise, so we need to find which segment is at the top
+            const winningIndex = Math.floor((360 - finalRotation) / sectionAngle);
             
             // Ensure the index is within bounds
             const adjustedIndex = winningIndex % names.length;
